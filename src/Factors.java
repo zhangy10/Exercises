@@ -21,7 +21,7 @@ public class Factors {
 				System.out.print(i);
 			}
 		}
-		System.out.println((input == 1 ? "" : " ") + input);
+		System.out.println((input <= 1 ? "" : " ") + input);
 	}
 
 }
