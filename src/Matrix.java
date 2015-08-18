@@ -63,7 +63,7 @@ public class Matrix {
 		scanner.close();
 
 		// The result will be printed into a file
-		// Matrix matrix = new Matrix(numStr, true);
+//		 Matrix matrix = new Matrix(numStr, true);
 		// The result will be printed into default console
 		Matrix matrix = new Matrix(numStr);
 		matrix.printMatrix();

@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Test {
 
 	public static void main(String[] args) {
@@ -14,9 +12,22 @@ public class Test {
 //		
 //		System.out.println(s1 + "-----");
 //		System.out.println(s2 + "-----");
+//		
+//		String a = "sdfsdf";
+//		System.out.printf("%10s%n", a);
 		
-		String a = "sdfsdf";
-		System.out.printf("%10s%n", a);
+//		System.out.printf("%e", Math.pow(10, 20));
+//		int a = Integer.MIN_VALUE;
+//		
+//		assert (a > 0): "you should keep on doing something...";
+		int a = 60; // 111100
+		int b = 11; // 001011
+		System.out.println(a | b); // 63  111111
+		System.out.println(a & b); // 8   001000
+		System.out.println(a ^ b); // 55  110111
+		System.out.println(a >> 2); // 15 001111 right smaller, means /4
+		System.out.println(a << 2); // 240 11110000 left larger, means *4
+		System.out.println(a << 4); // 960 1111000000 
 	}
 	
 }
