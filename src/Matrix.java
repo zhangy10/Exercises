@@ -78,26 +78,7 @@ public class Matrix {
 		for (double i = 0; i < dimension + 1; i++) {
 			for (double j = 0; j < dimension + 1; j++) {
 				double result = i * j;
-				if (i == 0 && j == 0) {
-					printCell(START_CODE);
-				}
-				else if (j == 0) {
-					printFirstCell(printer.numTrim(i));
-				}
-				else if (j == dimension) {
-					if (i == 0) {
-						printEndCell(printer.numTrim(j));
-					}
-					else {
-						printEndCell(printer.numTrim(result));
-					}
-				}
-				else if (i == 0) {
-					printCell(printer.numTrim(j));
-				}
-				else {
-					printCell(printer.numTrim(result));
-				}
+				printMartix((int) i, (int) j, printer.numTrim(result));
 			}
 			// If not the end, print a new line
 			if (i != dimension) {
@@ -106,16 +87,39 @@ public class Matrix {
 		}
 		printer.close();
 	}
+	
+	public void printMartix(int i, int j, String value) {
+		if (i == 0 && j == 0) {
+			printCell(START_CODE);
+		}
+		else if (j == 0) {
+			printFirstCell(printer.numTrim(i));
+		}
+		else if (j == dimension) {
+			if (i == 0) {
+				printEndCell(printer.numTrim(j));
+			}
+			else {
+				printEndCell(value);
+			}
+		}
+		else if (i == 0) {
+			printCell(printer.numTrim(j));
+		}
+		else {
+			printCell(value);
+		}
+	}
 
-	public void printEndCell(String num) {
+	private void printEndCell(String num) {
 		printCell(num, false, true);
 	}
 
-	public void printFirstCell(String num) {
+	private void printFirstCell(String num) {
 		printCell(num, true, false);
 	}
 
-	public void printCell(String num) {
+	private void printCell(String num) {
 		printCell(num, false, false);
 	}
 
