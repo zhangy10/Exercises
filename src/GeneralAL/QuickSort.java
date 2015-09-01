@@ -1,3 +1,4 @@
+package GeneralAL;
 
 /**
  * 
@@ -31,10 +32,7 @@ public class QuickSort {
 	}
 
 	public static void main(String[] args) {
-
-		QuickSort sort = new QuickSort(10);
-		// int[] arr = { 10, 3, 15, 1, 5, 4, 6, 2, 12344, 22, 0, 212 };
-
+		QuickSort sort = new QuickSort(20);
 		printArr(sort.getArray());
 		printArr(sort.quickSort(sort.getArray(), 0, sort.getSize() - 1));
 		Pair pair = sort.findNumber(50);
@@ -44,12 +42,12 @@ public class QuickSort {
 	class Pair {
 		int x;
 		int y;
+		int target;
 
 		public String toString() {
-			return x + " " + y;
+			return x + " + " + y + " = " + target;
 		}
 	}
-
 	public Pair findNumber(int target) {
 		for (int i = 0; i < arraySize; i++) {
 			int subTarget = target - theArray[i];
@@ -59,6 +57,7 @@ public class QuickSort {
 					Pair pair = new Pair();
 					pair.x = theArray[i];
 					pair.y = theArray[result];
+					pair.target = target;
 					return pair;
 				}
 			}

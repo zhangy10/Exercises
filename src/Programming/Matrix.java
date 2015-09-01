@@ -1,3 +1,5 @@
+package Programming;
+
 import java.io.File;
 import java.util.Formatter;
 import java.util.Scanner;
@@ -63,7 +65,7 @@ public class Matrix {
 		scanner.close();
 
 		// The result will be printed into a file
-//		 Matrix matrix = new Matrix(numStr, true);
+		// Matrix matrix = new Matrix(numStr, true);
 		// The result will be printed into default console
 		Matrix matrix = new Matrix(numStr);
 		matrix.printMatrix();
@@ -87,7 +89,7 @@ public class Matrix {
 		}
 		printer.close();
 	}
-	
+
 	public void printMartix(int i, int j, String value) {
 		if (i == 0 && j == 0) {
 			printCell(START_CODE);
@@ -149,11 +151,21 @@ public class Matrix {
 	}
 
 	public void newLine() {
+		newLine(false);
+	}
+
+	public void newLine(boolean isEdge) {
 		// first column need to be added
 		for (int i = 0; i < dimension + 1; i++) {
 			if (i != 0) {
-				printer.print(MEET_CODE);
+				if (isEdge) {
+					printer.print(LINE_CODE);
+				}
+				else {
+					printer.print(MEET_CODE);
+				}
 			}
+			
 			// 2 means 2 blanks at the beginning and at the end
 			for (int j = 0; j < formattedNum + 2; j++) {
 				printer.print(LINE_CODE);
@@ -194,11 +206,12 @@ public class Matrix {
 				System.out.printf(str, args);
 			}
 		}
-		
+
 		/**
 		 * To convert a double to a string, cut off the string behind "."
 		 * 
-		 * @param num a double number
+		 * @param num
+		 *            a double number
 		 * @return a string without "."
 		 */
 		public String numTrim(double num) {

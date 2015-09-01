@@ -1,3 +1,4 @@
+package GeneralAL;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
@@ -19,7 +20,7 @@ public class HashTarget {
 	}
 
 	public static void main(String[] args) {
-		HashTarget hashTarget = new HashTarget(10);
+		HashTarget hashTarget = new HashTarget(20);
 		System.out.println(Arrays.toString(hashTarget.getArray()));
 		Pair pair = hashTarget.getTarget(50);
 		System.out.println(pair != null ? pair.toString() : -1);
@@ -60,9 +61,10 @@ public class HashTarget {
 	class Pair {
 		int x;
 		int y;
+		int target;
 
 		public String toString() {
-			return x + " " + y;
+			return x + " + " + y + " = " + target;
 		}
 	}
 
@@ -76,6 +78,7 @@ public class HashTarget {
 				Pair pair = new Pair();
 				pair.x = restNum;
 				pair.y = theArray[i];
+				pair.target = target;
 				return pair;
 			}
 		}

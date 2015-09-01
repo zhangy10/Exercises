@@ -1,3 +1,4 @@
+package GeneralAL;
 import java.util.Scanner;
 
 public class BinaryToDecimal {

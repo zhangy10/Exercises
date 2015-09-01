@@ -1,3 +1,4 @@
+package Learning;
 import java.util.Arrays;
 
 // The Quick Sort is normally the fastest sorting algorithm

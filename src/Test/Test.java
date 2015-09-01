@@ -39,8 +39,12 @@ public class Test {
 		// double resultFormSuar = Suar(6, "71.2", 1.2);
 		// System.exit(0);
 		// System.out.println(resultFormSuar);
-		for (int i = 1; i < 10; i++) {
-			System.out.println(function(i));
+//		for (int i = 1; i < 10; i++) {
+//			System.out.println(function(i));
+//		}
+		int n = 10;
+		for (int i = 0; i < n + 2; i++) {
+			System.out.println(i % 10);
 		}
 	}
 
