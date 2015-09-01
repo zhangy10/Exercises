@@ -1,126 +1,85 @@
-import java.util.Arrays;
 
-// The Quick Sort is normally the fastest sorting algorithm
-
+/**
+ * 
+ * @author zhangy10 671205
+ *
+ *         Aug 29, 2015
+ *
+ *         QSort.java
+ * 
+ * 1. Implement for QuickSort
+ * 2. Redesign for x + y = target in a sorted array
+ * 
+ */
 public class QuickSort {
 
-	private static int[] theArray;
+	private int[] theArray;
+	private int arraySize;
 
-	private static int arraySize;
+	public int[] getArray() {
+		return theArray;
+	}
+
+	public int getSize() {
+		return arraySize;
+	}
+
+	public QuickSort(int arraySize) {
+		this.arraySize = arraySize;
+		theArray = new int[this.arraySize];
+		generateRandomArray();
+	}
 
 	public static void main(String[] args) {
 
-		QuickSort theSort = new QuickSort(10);
+		QuickSort sort = new QuickSort(10);
+		// int[] arr = { 10, 3, 15, 1, 5, 4, 6, 2, 12344, 22, 0, 212 };
 
-		theSort.generateRandomArray();
-
-		System.out.println(Arrays.toString(QuickSort.theArray));
-
-		theSort.quickSort(0, 9);
-
-		System.out.println(Arrays.toString(QuickSort.theArray));
-
+		printArr(sort.getArray());
+		printArr(sort.quickSort(sort.getArray(), 0, sort.getSize() - 1));
+		Pair pair = sort.findNumber(50);
+		System.out.println(pair != null ? pair.toString() : -1);
 	}
 
-	QuickSort(int newArraySize) {
+	class Pair {
+		int x;
+		int y;
 
-		arraySize = newArraySize;
-
-		theArray = new int[arraySize];
-
-		generateRandomArray();
-
-	}
-
-	public void quickSort(int left, int right) {
-
-		if (right - left <= 0)
-			return; // Everything is sorted
-
-		else {
-
-			// It doesn't matter what the pivot is, but it must
-			// be a value in the array
-
-			int pivot = theArray[right];
-
-			System.out.println(
-					"Value in right " + theArray[right] + " is made the pivot");
-
-			System.out.println("left = " + left + " right= " + right
-					+ " pivot= " + pivot + " sent to be partitioned");
-
-			int pivotLocation = partitionArray(left, right, pivot);
-
-			System.out.println(
-					"Value in left " + theArray[left] + " is made the pivot");
-
-			quickSort(left, pivotLocation - 1); // Sorts the left side
-
-			quickSort(pivotLocation + 1, right);
-
+		public String toString() {
+			return x + " " + y;
 		}
-
 	}
 
-	public int partitionArray(int left, int right, int pivot) {
-
-		int leftPointer = left - 1;
-
-		int rightPointer = right;
-
-		while (true) {
-
-			while (theArray[++leftPointer] < pivot)
-				;
-
-			printHorzArray(leftPointer, rightPointer);
-
-			System.out.println(theArray[leftPointer] + " in index "
-					+ leftPointer + " is bigger than the pivot value " + pivot);
-
-			while (rightPointer > 0 && theArray[--rightPointer] > pivot)
-				;
-
-			printHorzArray(leftPointer, rightPointer);
-
-			System.out.println(
-					theArray[rightPointer] + " in index " + rightPointer
-							+ " is smaller than the pivot value " + pivot);
-
-			printHorzArray(leftPointer, rightPointer);
-
-			if (leftPointer >= rightPointer) {
-
-				System.out.println("left is >= right so start again");
-
-				break;
-
+	public Pair findNumber(int target) {
+		for (int i = 0; i < arraySize; i++) {
+			int subTarget = target - theArray[i];
+			if (subTarget >= 0) {
+				int result = binarySearch(subTarget, 0, arraySize - 1);
+				if (result != -1) {
+					Pair pair = new Pair();
+					pair.x = theArray[i];
+					pair.y = theArray[result];
+					return pair;
+				}
 			}
-
 			else {
-
-				swapValues(leftPointer, rightPointer);
-
-				System.out.println(theArray[leftPointer] + " was swapped for "
-						+ theArray[rightPointer]);
-
+				break;
 			}
-
 		}
 
-		swapValues(leftPointer, right);
-
-		return leftPointer;
-
+		return null;
 	}
 
-	public void swapValues(int indexOne, int indexTwo) {
-
-		int temp = theArray[indexOne];
-		theArray[indexOne] = theArray[indexTwo];
-		theArray[indexTwo] = temp;
-
+	private int binarySearch(int target, int lo, int lh) {
+		if (lo > lh)
+			return -1;
+		int mid = (lo + lh) / 2;
+		if (theArray[mid] == target)
+			return mid;
+		else if (theArray[mid] < target)
+			return binarySearch(target, mid + 1, lh);
+		else
+			return binarySearch(target, lo, mid - 1);
 	}
 
 	public void generateRandomArray() {
@@ -136,63 +95,46 @@ public class QuickSort {
 
 	}
 
-	static void printHorzArray(int i, int j) {
-
-		for (int n = 0; n < 61; n++)
-			System.out.print("-");
-
-		System.out.println();
-
-		for (int n = 0; n < arraySize; n++) {
-
-			System.out.format("| %2s " + " ", n);
-
+	public static void printArr(int[] theArray) {
+		for (int i = 0; i <= theArray.length - 1; i++) {
+			if (i == 0)
+				System.out.print(theArray[i]);
+			else
+				System.out.print(" " + theArray[i]);
 		}
-
-		System.out.println("|");
-
-		for (int n = 0; n < 61; n++)
-			System.out.print("-");
-
 		System.out.println();
+	}
 
-		for (int n = 0; n < arraySize; n++) {
+	private int partition(int arr[], int left, int right) {
+		int i = left, j = right;
+		int tmp;
+		int pivot = arr[(left + right) / 2];
 
-			System.out.print(String.format("| %2s " + " ", theArray[n]));
-
+		while (i <= j) {
+			while (arr[i] < pivot)
+				i++;
+			while (arr[j] > pivot)
+				j--;
+			if (i <= j) {
+				tmp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = tmp;
+				i++;
+				j--;
+			}
 		}
+		;
 
-		System.out.println("|");
+		return i;
+	}
 
-		for (int n = 0; n < 61; n++)
-			System.out.print("-");
-
-		System.out.println();
-
-		if (i != -1) {
-
-			// Number of spaces to put before the F
-
-			int spacesBeforeFront = 6 * (i + 1) - 5;
-
-			for (int k = 0; k < spacesBeforeFront; k++)
-				System.out.print(" ");
-
-			System.out.print("L" + i);
-
-			// Number of spaces to put before the R
-
-			int spacesBeforeRear = 5 * (j + 1) - spacesBeforeFront;
-
-			for (int l = 0; l < spacesBeforeRear; l++)
-				System.out.print(" ");
-
-			System.out.print("R" + j);
-
-			System.out.println("\n");
-
-		}
-
+	public int[] quickSort(int arr[], int left, int right) {
+		int index = partition(arr, left, right);
+		if (left < index - 1)
+			quickSort(arr, left, index - 1);
+		if (index < right)
+			quickSort(arr, index, right);
+		return arr;
 	}
 
 }

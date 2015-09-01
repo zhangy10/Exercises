@@ -3,13 +3,13 @@ import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.LinkedList;
 
-public class Graph {
+public class NGraph {
 
 	Hashtable<Node, ArrayList<Node>> adjList = new Hashtable<Node, ArrayList<Node>>();
 	ArrayList<Node> nodes = new ArrayList<Node>();
 	LinkedList<Node> topoSorted;
 
-	public Graph() {
+	public NGraph() {
 	}
 
 	public void add(Node node) {
@@ -180,7 +180,7 @@ public class Graph {
 	}
 
 	public static void main(String[] args) {
-		Graph g = new Graph();
+		NGraph g = new NGraph();
 		g.instantiateGraph();
 	}
 }
