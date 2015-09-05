@@ -42,9 +42,16 @@ public class Test {
 //		for (int i = 1; i < 10; i++) {
 //			System.out.println(function(i));
 //		}
-		int n = 10;
-		for (int i = 0; i < n + 2; i++) {
-			System.out.println(i % 10);
+//		int n = 10;
+//		for (int i = 0; i < n + 2; i++) {
+//			System.out.println(i % 10);
+//		}
+		
+//		for (boolean isRed = false; isRed != true; isRed |= true) {
+//			System.out.println("Hello");
+//		}
+		for (int i = 0; i < 2; i++) {
+			System.out.println(i == 0 ? true : false); 
 		}
 	}
 

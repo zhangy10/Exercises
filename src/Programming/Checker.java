@@ -1,27 +1,34 @@
 package Programming;
 
-
+/**
+ * 
+ * @author zhangy10 671205
+ *
+ *         Sep 5, 2015
+ *
+ *         Checker.java
+ */
 public class Checker {
 	private boolean isRed;
 	private int row;
 	private int column;
-	private static final int firstRow = 1;
-	private static final int lastRow = 8;
-	private static final int firstColumn = 1;
-	private static final int lastColumn = 8;
 
-	public Checker(boolean paramBoolean) {
-		this(paramBoolean, 1, 1);
+	private static final int MIN_MOVE = 1;
+	private static final int MAX_MOVE = 8;
+	private static final int NUM_ROLE = 2;
+
+	public Checker(boolean isRed) {
+		this(isRed, MIN_MOVE, MIN_MOVE);
 	}
 
-	public Checker(boolean paramBoolean, int paramInt1, int paramInt2) {
-		this.isRed = paramBoolean;
-		if (!validSquare(paramInt1, paramInt2)) {
-			paramInt1 = 1;
-			paramInt2 = 1;
+	public Checker(boolean isRed, int row, int column) {
+		this.isRed = isRed;
+		if (!validSingleStep(row, column)) {
+			row = MIN_MOVE;
+			column = MIN_MOVE;
 		}
-		this.row = paramInt1;
-		this.column = paramInt2;
+		this.row = row;
+		this.column = column;
 	}
 
 	public boolean isRed() {
@@ -36,27 +43,30 @@ public class Checker {
 		return this.column;
 	}
 
-	public void move(int paramInt1, int paramInt2) {
-		moveIfValid(paramInt1, paramInt2, 1);
+	public void move(int row, int column) {
+		validMove(row, column);
 	}
 
-	private void moveIfValid(int paramInt1, int paramInt2, int paramInt3) {
-		if (validStep(paramInt1, paramInt2, paramInt3)) {
-			this.row += paramInt1;
-			this.column += paramInt2;
+	private void validMove(int row, int column) {
+		if (validStep(row, column)) {
+			this.row += row;
+			this.column += column;
 		}
 	}
 
-	private boolean validStep(int paramInt1, int paramInt2, int paramInt3) {
-		if ((Math.abs(paramInt1) == paramInt3)
-				&& (Math.abs(paramInt2) == paramInt3))
-			if (this.isRed != paramInt1 < 0)
-				;
-		return validSquare(this.row + paramInt1, this.column + paramInt2);
+	private boolean validStep(int row, int column) {
+		if (Math.abs(row) != MIN_MOVE || Math.abs(column) != MIN_MOVE) {
+			return false;
+		}
+		// has been update, negative for red one
+		if (this.isRed == row > 0)
+			return false;
+		return validSingleStep(this.row + row, this.column + column);
 	}
 
-	private boolean validSquare(int paramInt1, int paramInt2) {
-		return (paramInt1 >= 1) && (paramInt1 <= 8) && (paramInt2 >= 1)
-				&& (paramInt2 <= 8) && (paramInt2 % 2 == paramInt1 % 2);
+	private boolean validSingleStep(int row, int column) {
+		return (row >= MIN_MOVE) && (row <= MAX_MOVE) && (column >= MIN_MOVE)
+				&& (column <= MAX_MOVE)
+				&& (column % NUM_ROLE == row % NUM_ROLE);
 	}
 }
