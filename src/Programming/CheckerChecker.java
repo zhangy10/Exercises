@@ -22,7 +22,7 @@ public class CheckerChecker {
 			testChecker();
 		}
 		catch (Exception e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 			System.out.println(NO);
 			System.exit(1);
 		}
