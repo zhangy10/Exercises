@@ -70,25 +70,25 @@ public class CheckerChecker {
 		// ++
 		Checker checker = newChecker(isRed, row, column);
 		for (int k = MIN_MOVE; k <= MAX_MOVE; k++) {
-			moveStep(checker, 1, 1);
+			moveStep(checker, MIN_MOVE, MIN_MOVE);
 		}
 
 		// +-
 		checker = newChecker(isRed, row, column);
 		for (int k = MIN_MOVE; k <= MAX_MOVE; k++) {
-			moveStep(checker, 1, -1);
+			moveStep(checker, MIN_MOVE, -MIN_MOVE);
 		}
 
 		// --
 		checker = newChecker(isRed, row, column);
 		for (int k = MIN_MOVE; k <= MAX_MOVE; k++) {
-			moveStep(checker, -1, -1);
+			moveStep(checker, -MIN_MOVE, -MIN_MOVE);
 		}
 
 		// -+
 		checker = newChecker(isRed, row, column);
 		for (int k = MIN_MOVE; k <= MAX_MOVE; k++) {
-			moveStep(checker, -1, 1);
+			moveStep(checker, -MIN_MOVE, MIN_MOVE);
 		}
 
 		// check the number of movement > 1
@@ -148,7 +148,7 @@ public class CheckerChecker {
 
 	private static void verifyEdge(int row, int column) throws Exception {
 		if (row < MIN_MOVE || row > MAX_MOVE || column < MIN_MOVE
-				|| column > MAX_MOVE || (column % 2 != row % 2)) {
+				|| column > MAX_MOVE || (column % NUM_ROLE != row % NUM_ROLE)) {
 			throw new Exception("Out of range error!");
 		}
 	}
