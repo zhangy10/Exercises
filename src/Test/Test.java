@@ -1,5 +1,10 @@
 package Test;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+
 public class Test {
 
 	public static void main(String[] args) {
@@ -53,6 +58,41 @@ public class Test {
 		for (int i = 0; i < 2; i++) {
 			System.out.println(i == 0 ? true : false); 
 		}
+		
+		Object o = new Object();
+			
+		
+		
+		System.gc();
+	}
+	
+	class Compare implements Comparator<Object>{
+		
+		public Compare() {
+			
+		}
+		
+		
+		public int toCompare(Compare from) {
+			return -1;
+		}
+
+
+		@Override
+		public int compare(Object lhs, Object rhs) {
+			
+			return 0;
+		}
+	}
+	
+	class Compare1 implements Comparable<Object> {
+
+		@Override
+		public int compareTo(Object another) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+		
 	}
 
 	public static int function(int n) {

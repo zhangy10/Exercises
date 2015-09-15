@@ -31,18 +31,6 @@ public class Checker {
 		this.column = column;
 	}
 
-	public boolean isRed() {
-		return this.isRed;
-	}
-
-	public int getRow() {
-		return this.row;
-	}
-
-	public int getColumn() {
-		return this.column;
-	}
-
 	public void move(int row, int column) {
 		validMove(row, column);
 	}
@@ -68,5 +56,17 @@ public class Checker {
 		return (row >= MIN_MOVE) && (row <= MAX_MOVE) && (column >= MIN_MOVE)
 				&& (column <= MAX_MOVE)
 				&& (column % NUM_ROLE == row % NUM_ROLE);
+	}
+
+	public boolean isRed() {
+		return this.isRed;
+	}
+
+	public int getRow() {
+		return this.row;
+	}
+
+	public int getColumn() {
+		return this.column;
 	}
 }

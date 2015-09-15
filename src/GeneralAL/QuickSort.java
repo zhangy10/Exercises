@@ -32,10 +32,10 @@ public class QuickSort {
 	}
 
 	public static void main(String[] args) {
-		QuickSort sort = new QuickSort(20);
+		QuickSort sort = new QuickSort(10);
 		printArr(sort.getArray());
 		printArr(sort.quickSort(sort.getArray(), 0, sort.getSize() - 1));
-		Pair pair = sort.findNumber(50);
+		Pair pair = sort.findNumber(20);
 		System.out.println(pair != null ? pair.toString() : -1);
 	}
 
@@ -52,7 +52,8 @@ public class QuickSort {
 		for (int i = 0; i < arraySize; i++) {
 			int subTarget = target - theArray[i];
 			if (subTarget >= 0) {
-				int result = binarySearch(subTarget, 0, arraySize - 1);
+				// important here, the search should start at i + 1!
+				int result = binarySearch(subTarget, i + 1, arraySize - 1);
 				if (result != -1) {
 					Pair pair = new Pair();
 					pair.x = theArray[i];
