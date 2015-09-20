@@ -1,9 +1,8 @@
 package Test;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Comparator;
+
+import Graph.Node;
 
 public class Test {
 
@@ -44,47 +43,43 @@ public class Test {
 		// double resultFormSuar = Suar(6, "71.2", 1.2);
 		// System.exit(0);
 		// System.out.println(resultFormSuar);
-//		for (int i = 1; i < 10; i++) {
-//			System.out.println(function(i));
-//		}
-//		int n = 10;
-//		for (int i = 0; i < n + 2; i++) {
-//			System.out.println(i % 10);
-//		}
-		
-//		for (boolean isRed = false; isRed != true; isRed |= true) {
-//			System.out.println("Hello");
-//		}
+		// for (int i = 1; i < 10; i++) {
+		// System.out.println(function(i));
+		// }
+		// int n = 10;
+		// for (int i = 0; i < n + 2; i++) {
+		// System.out.println(i % 10);
+		// }
+
+		// for (boolean isRed = false; isRed != true; isRed |= true) {
+		// System.out.println("Hello");
+		// }
 		for (int i = 0; i < 2; i++) {
-			System.out.println(i == 0 ? true : false); 
+			System.out.println(i == 0 ? true : false);
 		}
-		
+
 		Object o = new Object();
-			
-		
-		
+
 		System.gc();
 	}
-	
-	class Compare implements Comparator<Object>{
-		
+
+	class Compare implements Comparator<Object> {
+
 		public Compare() {
-			
+
 		}
-		
-		
+
 		public int toCompare(Compare from) {
 			return -1;
 		}
 
-
 		@Override
 		public int compare(Object lhs, Object rhs) {
-			
+
 			return 0;
 		}
 	}
-	
+
 	class Compare1 implements Comparable<Object> {
 
 		@Override
@@ -92,13 +87,39 @@ public class Test {
 			// TODO Auto-generated method stub
 			return 0;
 		}
-		
+
 	}
 
 	public static int function(int n) {
 		if (n == 1)
 			return 1;
 		return function(n - 1) * (2 * n - 1);
+	}
+
+	public enum TestE {
+
+		ER(new Node(1)), UU(1), RR(ER, UU);
+
+		private int title;
+		private Node node;
+		private TestE[] testEs;
+
+		TestE() {
+
+		}
+
+		TestE(int title) {
+			this.title = title;
+		}
+		
+		TestE(Node node) {
+			this.node = node;
+		}
+		
+		TestE(TestE... testEs) {
+			this.testEs = testEs;
+		}
+
 	}
 
 }

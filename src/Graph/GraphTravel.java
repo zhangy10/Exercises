@@ -9,43 +9,54 @@ import java.util.List;
  *         Sep 1, 2015
  *
  *         GraphTravel.java
- *         
- *         Abstract super class
- *         Designing for covering different kinds of graph traveling algorithms
+ * 
+ *         Abstract super class Designing for covering different kinds of graph
+ *         traveling algorithms
  */
 public abstract class GraphTravel {
+	// be immutable
+	// would be complex if the object is immutable
 	protected Graph graph;
-	protected List<Node> vertexs;
-	protected int complexity = 0;
-
-	public int getComplexity() {
-		return complexity;
-	}
+	public int complexity = 0;
 
 	public Graph getGraph() {
 		return graph;
 	}
 
-	public List<Node> getVertexs() {
-		return vertexs;
-	}
-
 	public GraphTravel(int size) {
-		graph = new GraphMatrix(size);
-		vertexs = graph.getVertexs();
+		this(BuildGraph.buildDirectedGraph(new GraphMatrix(size)));
 	}
 
-	public void resetGraph() {
-		complexity = 0;
-		for (int i = 0; i < vertexs.size(); i++) {
-			vertexs.get(i).state = GraphState.NON_VISITED;
+	public GraphTravel(Graph graph) {
+		this.graph = graph;
+	}
+
+	/**
+	 * Calculate in-degree and out-degree
+	 * 
+	 */
+	public void printDegree() {
+		List<Node> vertexs = graph.getVertexs();
+		// O(V + E)
+		// for (Node node : vertexs) {
+		// List<Node> adjacentNodes = graph.getAdjacency(node, vertexs);
+		// node.outDegree += adjacentNodes.size();
+		// for (Node adjacentNode : adjacentNodes) {
+		// adjacentNode.inDegree++;
+		// }
+		// }
+		for (Node v : vertexs) {
+			System.out.println("Vertex :[" + (v.vaule + 1) + "] Indegree : "
+					+ v.inDegree + " Outdegree : " + v.outDegree);
 		}
+		System.out.println();
 	}
 
 	/**
 	 * Marking the node has been visited
 	 * 
-	 * @param n current node
+	 * @param n
+	 *            current node
 	 */
 	protected void visitedNode(Node n) {
 		n.state = GraphState.VISITED;

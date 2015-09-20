@@ -9,4 +9,11 @@ public class Node {
 	public Node(int vaule) {
 		this.vaule = vaule;
 	}
+	
+	public Node(Node n) {
+		this.vaule = n.vaule;
+		this.inDegree = n.inDegree;
+		this.outDegree = n.outDegree;
+		this.state = n.state;
+	}
 }

@@ -32,10 +32,6 @@ public class Checker {
 	}
 
 	public void move(int row, int column) {
-		validMove(row, column);
-	}
-
-	private void validMove(int row, int column) {
 		if (validStep(row, column)) {
 			this.row += row;
 			this.column += column;
@@ -52,10 +48,12 @@ public class Checker {
 		return validSingleStep(this.row + row, this.column + column);
 	}
 
-	private boolean validSingleStep(int row, int column) {
-		return (row >= MIN_MOVE) && (row <= MAX_MOVE) && (column >= MIN_MOVE)
-				&& (column <= MAX_MOVE)
-				&& (column % NUM_ROLE == row % NUM_ROLE);
+	private boolean validSingleStep(int row, int column){
+		if (row < MIN_MOVE || row > MAX_MOVE || column < MIN_MOVE
+				|| column > MAX_MOVE || (column % NUM_ROLE != row % NUM_ROLE)) {
+			return false;
+		}
+		return true;
 	}
 
 	public boolean isRed() {
