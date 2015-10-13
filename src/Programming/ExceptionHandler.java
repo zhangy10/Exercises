@@ -10,9 +10,10 @@ package Programming;
  */
 public final class ExceptionHandler implements Thread.UncaughtExceptionHandler {
 
-	@Override
-	public void uncaughtException(Thread thread, Throwable ex) {
-		System.out.println(ex + " " + thread.getName() + " " + this.getClass().getName());
-	}
+    @Override
+    public void uncaughtException(Thread thread, Throwable ex) {
+        System.out.println(
+                ex + " " + thread.getName() + " " + this.getClass().getName());
+    }
 
 }

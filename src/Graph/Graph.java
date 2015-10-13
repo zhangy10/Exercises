@@ -11,13 +11,13 @@ import java.util.List;
  *         Graph.java
  */
 public interface Graph {
-	public void addEdge(Node from, Node to);
+    public void addEdge(Node from, Node to);
 
-	public List<Node> getAdjacency(Node v, List<Node> nodes);
+    public List<Node> getAdjacency(Node v, List<Node> nodes);
 
-	public void printGraph();
+    public void printGraph();
 
-	public int getSize();
+    public int getSize();
 
-	public List<Node> getVertexs();
+    public List<Node> getVertexs();
 }

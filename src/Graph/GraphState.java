@@ -1,6 +1,5 @@
 package Graph;
 
-
 public enum GraphState {
-	VISITED, NON_VISITED,
+    VISITED, NON_VISITED,
 }

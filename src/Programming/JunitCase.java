@@ -7,24 +7,24 @@ package Programming;
  *         Sep 4, 2015
  *
  *         JunitCase.java
- *         
- *         Simply testing demo 
+ * 
+ *         Simply testing demo
  */
 public class JunitCase {
 
-	private int x, y;
+    private int x, y;
 
-	public JunitCase() {
+    public JunitCase() {
 
-	}
+    }
 
-	public JunitCase(int x, int y) {
-		this.x = x;
-		this.y = y;
-	}
+    public JunitCase(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 
-	public int calculateArea(int height) {
+    public int calculateArea(int height) {
 
-		return 0;
-	}
+        return 0;
+    }
 }

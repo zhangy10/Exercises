@@ -15,16 +15,16 @@ package Programming;
  */
 public class Bishop extends ChessPiece {
 
-	public Bishop(int row, int column) {
-		super(row, column);
-	}
+    public Bishop(int row, int column) {
+        super(row, column);
+    }
 
-	@Override
-	public boolean validMove(int toRow, int toColumn) {
-		if (Math.abs(this.row - toRow) == Math.abs(this.column - toColumn)) {
-			return super.validMove(toRow, toColumn);
-		}
-		return false;
-	}
+    @Override
+    public boolean validMove(int toRow, int toColumn) {
+        if (Math.abs(this.row - toRow) == Math.abs(this.column - toColumn)) {
+            return super.validMove(toRow, toColumn);
+        }
+        return false;
+    }
 
 }

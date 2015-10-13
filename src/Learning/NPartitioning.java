@@ -1,4 +1,5 @@
 package Learning;
+
 import java.util.Arrays;
 
 // When we partition data we are dividing it into
@@ -10,180 +11,180 @@ import java.util.Arrays;
 
 public class NPartitioning {
 
-	private static int[] theArray;
+    private static int[] theArray;
 
-	private static int arraySize;
+    private static int arraySize;
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		NPartitioning partitionArray = new NPartitioning(10);
+        NPartitioning partitionArray = new NPartitioning(10);
 
-		partitionArray.generateRandomArray();
+        partitionArray.generateRandomArray();
 
-		System.out.println(Arrays.toString(NPartitioning.theArray));
+        System.out.println(Arrays.toString(NPartitioning.theArray));
 
-		// Every item smaller than 35 will be on the left and
-		// everything bigger will be on the right
+        // Every item smaller than 35 will be on the left and
+        // everything bigger will be on the right
 
-		partitionArray.partitionArray(35);
+        partitionArray.partitionArray(35);
 
-		System.out.println(Arrays.toString(NPartitioning.theArray));
+        System.out.println(Arrays.toString(NPartitioning.theArray));
 
-	}
+    }
 
-	public void partitionArray(int pivot) {
+    public void partitionArray(int pivot) {
 
-		// If leftPointer finds an item that is greater
-		// than pivot it stops and waits for the rightPointer
-		// to find a value less than pivot. Then the items
-		// are switched
+        // If leftPointer finds an item that is greater
+        // than pivot it stops and waits for the rightPointer
+        // to find a value less than pivot. Then the items
+        // are switched
 
-		// Starts at the left side of array before index 0
+        // Starts at the left side of array before index 0
 
-		int leftPointer = -1;
+        int leftPointer = -1;
 
-		// Starts at the right side of the array after the last index
+        // Starts at the right side of the array after the last index
 
-		int rightPointer = arraySize;
+        int rightPointer = arraySize;
 
-		while (true) {
+        while (true) {
 
-			// Cycle through array until the end is reached
-			// or an item bigger than pivot is found. Then
-			// wait for rightPointer to finish cycling
+            // Cycle through array until the end is reached
+            // or an item bigger than pivot is found. Then
+            // wait for rightPointer to finish cycling
 
-			while (leftPointer < (arraySize - 1)
-					&& theArray[++leftPointer] < pivot)
-				;
+            while (leftPointer < (arraySize - 1)
+                    && theArray[++leftPointer] < pivot)
+                ;
 
-			printHorzArray(leftPointer, rightPointer);
+            printHorzArray(leftPointer, rightPointer);
 
-			System.out.println(theArray[leftPointer] + " in index "
-					+ leftPointer + " is bigger than the pivot value " + pivot);
+            System.out.println(theArray[leftPointer] + " in index "
+                    + leftPointer + " is bigger than the pivot value " + pivot);
 
-			// Cycle through array until the beginning is reached
-			// or an item smaller than pivot is found.
+            // Cycle through array until the beginning is reached
+            // or an item smaller than pivot is found.
 
-			while (rightPointer > 0 && theArray[--rightPointer] > pivot)
-				;
+            while (rightPointer > 0 && theArray[--rightPointer] > pivot)
+                ;
 
-			printHorzArray(leftPointer, rightPointer);
+            printHorzArray(leftPointer, rightPointer);
 
-			System.out.println(
-					theArray[rightPointer] + " in index " + rightPointer
-							+ " is smaller than the pivot value " + pivot);
+            System.out.println(
+                    theArray[rightPointer] + " in index " + rightPointer
+                            + " is smaller than the pivot value " + pivot);
 
-			printHorzArray(leftPointer, rightPointer);
+            printHorzArray(leftPointer, rightPointer);
 
-			// When the 2 pointers meet at the middle break
-			// out of the while loop
+            // When the 2 pointers meet at the middle break
+            // out of the while loop
 
-			if (leftPointer >= rightPointer)
-				break;
+            if (leftPointer >= rightPointer)
+                break;
 
-			else {
+            else {
 
-				// Swap the values in the pointers
+                // Swap the values in the pointers
 
-				swapValues(leftPointer, rightPointer);
+                swapValues(leftPointer, rightPointer);
 
-				System.out.println(theArray[leftPointer] + " was swapped for "
-						+ theArray[rightPointer]);
+                System.out.println(theArray[leftPointer] + " was swapped for "
+                        + theArray[rightPointer]);
 
-			}
+            }
 
-		}
+        }
 
-	}
+    }
 
-	public void swapValues(int indexOne, int indexTwo) {
+    public void swapValues(int indexOne, int indexTwo) {
 
-		int temp = theArray[indexOne];
-		theArray[indexOne] = theArray[indexTwo];
-		theArray[indexTwo] = temp;
+        int temp = theArray[indexOne];
+        theArray[indexOne] = theArray[indexTwo];
+        theArray[indexTwo] = temp;
 
-	}
+    }
 
-	NPartitioning(int newArraySize) {
+    NPartitioning(int newArraySize) {
 
-		arraySize = newArraySize;
+        arraySize = newArraySize;
 
-		theArray = new int[arraySize];
+        theArray = new int[arraySize];
 
-		generateRandomArray();
+        generateRandomArray();
 
-	}
+    }
 
-	public void generateRandomArray() {
+    public void generateRandomArray() {
 
-		for (int i = 0; i < arraySize; i++) {
+        for (int i = 0; i < arraySize; i++) {
 
-			// Generate a random array with values between
-			// 10 and 59
+            // Generate a random array with values between
+            // 10 and 59
 
-			theArray[i] = (int) (Math.random() * 50) + 10;
+            theArray[i] = (int) (Math.random() * 50) + 10;
 
-		}
+        }
 
-	}
+    }
 
-	static void printHorzArray(int i, int j) {
+    static void printHorzArray(int i, int j) {
 
-		for (int n = 0; n < 61; n++)
-			System.out.print("-");
+        for (int n = 0; n < 61; n++)
+            System.out.print("-");
 
-		System.out.println();
+        System.out.println();
 
-		for (int n = 0; n < arraySize; n++) {
+        for (int n = 0; n < arraySize; n++) {
 
-			System.out.format("| %2s " + " ", n);
+            System.out.format("| %2s " + " ", n);
 
-		}
+        }
 
-		System.out.println("|");
+        System.out.println("|");
 
-		for (int n = 0; n < 61; n++)
-			System.out.print("-");
+        for (int n = 0; n < 61; n++)
+            System.out.print("-");
 
-		System.out.println();
+        System.out.println();
 
-		for (int n = 0; n < arraySize; n++) {
+        for (int n = 0; n < arraySize; n++) {
 
-			System.out.print(String.format("| %2s " + " ", theArray[n]));
+            System.out.print(String.format("| %2s " + " ", theArray[n]));
 
-		}
+        }
 
-		System.out.println("|");
+        System.out.println("|");
 
-		for (int n = 0; n < 61; n++)
-			System.out.print("-");
+        for (int n = 0; n < 61; n++)
+            System.out.print("-");
 
-		System.out.println();
+        System.out.println();
 
-		if (i != -1) {
+        if (i != -1) {
 
-			// Number of spaces to put before the F
+            // Number of spaces to put before the F
 
-			int spacesBeforeFront = 5 * i + 1;
+            int spacesBeforeFront = 5 * i + 1;
 
-			for (int k = 0; k < spacesBeforeFront; k++)
-				System.out.print(" ");
+            for (int k = 0; k < spacesBeforeFront; k++)
+                System.out.print(" ");
 
-			System.out.print("L");
+            System.out.print("L");
 
-			// Number of spaces to put before the R
+            // Number of spaces to put before the R
 
-			int spacesBeforeRear = (5 * j + 1 - 1) - spacesBeforeFront;
+            int spacesBeforeRear = (5 * j + 1 - 1) - spacesBeforeFront;
 
-			for (int l = 0; l < spacesBeforeRear; l++)
-				System.out.print(" ");
+            for (int l = 0; l < spacesBeforeRear; l++)
+                System.out.print(" ");
 
-			System.out.print("H");
+            System.out.print("H");
 
-			System.out.println("\n");
+            System.out.println("\n");
 
-		}
+        }
 
-	}
+    }
 
 }
