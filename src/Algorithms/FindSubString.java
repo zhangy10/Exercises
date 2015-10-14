@@ -15,21 +15,37 @@ public class FindSubString {
     }
 
     public static void main(String[] args) {
-        FindSubString fString = new FindSubString("GATTAGACCTTA");
+        // "GATTAGACCTTA"  "GAAAAAAAAAAT"   "TTTTTTAT"
+        FindSubString fString = new FindSubString("GAAAAAAAAAAT");
         List<String> tempList = fString.subBruteForce("A", "T");
         System.out.println(
                 Arrays.toString(tempList.toArray(new String[tempList.size()])));
         System.out.println(fString.occurrenceScan("A", "T"));
+        System.out.println(fString.linearScan("A", "T"));
     }
 
     public List<String> subBruteForce(String start, String end) {
         List<String> subStrList = new ArrayList<>();
         for (int i = 0; i < inputs.size(); i++)
             if (inputs.get(i).equals(start))
-                for (int j = i + 1; j < inputs.size() - 1; j++)
+                for (int j = i + 1; j < inputs.size(); j++)
                     if (inputs.get(j).equals(end))
                         subStrList.add(originalStr.substring(i, j + 1));
         return subStrList;
+    }
+    
+    public int linearScan(String start, String end) {
+        int count = 0;
+        int occurA = 0;
+        for (int i = 0; i < inputs.size(); i++) {
+            if (inputs.get(i).equals(start)) {
+                occurA++;
+            }
+            else if (inputs.get(i).equals(end)) {
+                count += occurA;
+            }
+        }
+        return count;
     }
 
     public int occurrenceScan(String start, String end) {

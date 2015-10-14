@@ -8,7 +8,7 @@ public class HasBinaryTree {
 
         System.out.println(hasBinaryTree(post, 0, in, 0, post.length));
     }
-
+    
     public static boolean hasBinaryTree(int[] post, int i, int[] in, int j,
             int size) {
         if (size == 0) {
