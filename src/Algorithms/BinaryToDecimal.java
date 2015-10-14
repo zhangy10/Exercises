@@ -1,4 +1,4 @@
-package GeneralAL;
+package Algorithms;
 
 import java.util.Scanner;
 

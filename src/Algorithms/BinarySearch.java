@@ -1,4 +1,4 @@
-package GeneralAL;
+package Algorithms;
 
 public class BinarySearch {
 

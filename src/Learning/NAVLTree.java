@@ -1,42 +1,14 @@
 package Learning;
 
+import Algorithms.TreeHelper;
+
 public class NAVLTree {
 
-    private static class Node {
-        Node left, right;
-        Node parent;
-        int value;
-        int height = 0;
-
-        public Node(int data, Node parent) {
-            this.value = data;
-            this.parent = parent;
-        }
-
-        @Override
-        public String toString() {
-            return value + " height " + height + " parent "
-                    + (parent == null ? "NULL" : parent.value) + " | ";
-        }
-
-        void setLeftChild(Node child) {
-            if (child != null) {
-                child.parent = this;
-            }
-
-            this.left = child;
-        }
-
-        void setRightChild(Node child) {
-            if (child != null) {
-                child.parent = this;
-            }
-
-            this.right = child;
-        }
-    }
-
     private Node root = null;
+
+    public Node getRoot() {
+        return root;
+    }
 
     public void insert(int data) {
         insert(root, data);
@@ -260,13 +232,37 @@ public class NAVLTree {
         return null;
     }
 
-    public void traverseInOrder() {
-        System.out.println("ROOT " + root.toString());
-        inorder(root);
-        System.out.println();
+    public static void main(String[] args) {
+        NAVLTree navlTree = new NAVLTree();
+        navlTree.insert(1);
+        navlTree.insert(2);
+        navlTree.insert(3);
+        navlTree.insert(4);
+        navlTree.insert(5);
+        navlTree.insert(6);
+        navlTree.insert(-1);
+        navlTree.insert(-2);
+        navlTree.insert(100);
+        navlTree.insert(10);
+        navlTree.insert(9);
+        navlTree.insert(11);
+        navlTree.insert(13);
+        navlTree.insert(20);
+        navlTree.insert(25);
+        navlTree.insert(99);
+        navlTree.insert(-10);
+        navlTree.insert(123);
+        navlTree.insert(88);
+        navlTree.insert(66);
+        TreeHelper.displayTree(navlTree.getRoot());
+        navlTree.traverse();
+        Node root = navlTree.getRoot();
+        System.out.println(TreeHelper.minByKth(root, 2));
+        System.out.println(TreeHelper.maxByKth(root, 1));
+        System.out.println(TreeHelper.secondSmallest(root));
     }
 
-    private void inorder(Node node) {
+    public void inorder(Node node) {
         if (node != null) {
             inorder(node.left);
             System.out.print(node.toString());
@@ -274,26 +270,31 @@ public class NAVLTree {
         }
     }
 
-    public static void main(String[] args) {
-        NAVLTree avl = new NAVLTree();
-        avl.insert(1);
-        avl.traverseInOrder();
-        avl.insert(2);
-        avl.traverseInOrder();
-        avl.insert(3);
-        avl.traverseInOrder();
-        avl.insert(4);
-        avl.traverseInOrder();
-        avl.delete(1);
-        avl.traverseInOrder();
-        avl.insert(5);
-        avl.traverseInOrder();
-        avl.insert(6);
-        avl.traverseInOrder();
-        avl.delete(3);
-        avl.traverseInOrder();
-        avl.delete(5);
-        avl.traverseInOrder();
+    public void preorder(Node node) {
+        if (node != null) {
+            System.out.print(node.toString());
+            preorder(node.left);
+            preorder(node.right);
+        }
     }
 
+    public void postorder(Node node) {
+        if (node != null) {
+            preorder(node.left);
+            preorder(node.right);
+            System.out.print(node.toString());
+        }
+    }
+
+    public void traverse() {
+        System.out.print("Inorder: ");
+        inorder(root);
+        System.out.println();
+        System.out.print("preorder: ");
+        preorder(root);
+        System.out.println();
+        System.out.print("postorder: ");
+        postorder(root);
+        System.out.println();
+    }
 }
