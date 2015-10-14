@@ -16,7 +16,7 @@ public class FindSubString {
 
     public static void main(String[] args) {
         // "GATTAGACCTTA"  "GAAAAAAAAAAT"   "TTTTTTAT"
-        FindSubString fString = new FindSubString("GAAAAAAAAAAT");
+        FindSubString fString = new FindSubString("GATTAGACCTTA");
         List<String> tempList = fString.subBruteForce("A", "T");
         System.out.println(
                 Arrays.toString(tempList.toArray(new String[tempList.size()])));
@@ -26,7 +26,7 @@ public class FindSubString {
 
     public List<String> subBruteForce(String start, String end) {
         List<String> subStrList = new ArrayList<>();
-        for (int i = 0; i < inputs.size(); i++)
+        for (int i = 0; i < inputs.size() - 1; i++)
             if (inputs.get(i).equals(start))
                 for (int j = i + 1; j < inputs.size(); j++)
                     if (inputs.get(j).equals(end))
