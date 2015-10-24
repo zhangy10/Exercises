@@ -1,8 +1,6 @@
-package Learning;
+package Algorithms;
 
-import Algorithms.TreeHelper;
-
-public class NAVLTree {
+public class AVLTree {
 
     private Node root = null;
 
@@ -233,7 +231,7 @@ public class NAVLTree {
     }
 
     public static void main(String[] args) {
-        NAVLTree navlTree = new NAVLTree();
+        AVLTree navlTree = new AVLTree();
         navlTree.insert(1);
         navlTree.insert(2);
         navlTree.insert(3);
@@ -257,9 +255,13 @@ public class NAVLTree {
         TreeHelper.displayTree(navlTree.getRoot());
         navlTree.traverse();
         Node root = navlTree.getRoot();
-        System.out.println(TreeHelper.minByKth(root, 2));
-        System.out.println(TreeHelper.maxByKth(root, 1));
-        System.out.println(TreeHelper.secondSmallest(root));
+        System.out.println(
+                "The 2th smallest key : " + TreeHelper.minByKth(root, 2));
+        System.out.println("The max key : " + TreeHelper.maxByKth(root, 1));
+        System.out.println(
+                "The second smallest key : " + TreeHelper.secondSmallest(root));
+        System.out.println("Alternative way to find the second smallest key : "
+                + TreeHelper.findSecondSmallest(root));
     }
 
     public void inorder(Node node) {

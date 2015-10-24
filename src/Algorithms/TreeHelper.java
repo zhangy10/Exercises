@@ -1,7 +1,5 @@
 package Algorithms;
 
-import Learning.Node;
-
 public class TreeHelper {
 
     static class StackNode {
@@ -60,6 +58,10 @@ public class TreeHelper {
         }
     }
 
+    /**
+     * To display a AVL Tree as a diagram.
+     * 
+     */
     public static void displayTree(Node root) {
         Stack globalStack = new Stack();
         globalStack.push(root);
@@ -99,6 +101,10 @@ public class TreeHelper {
                 "+------------------------------------------------------------+");
     }
 
+    /**
+     * To count the number of subtrees
+     * 
+     */
     public static int count(Node root) {
         if (root == null)
             return 0;
@@ -106,6 +112,10 @@ public class TreeHelper {
             return count(root.getLeft()) + count(root.getRight()) + 1;
     }
 
+    /**
+     * To find the Kth maximum value in an AVL tree.
+     * 
+     */
     public static int maxByKth(Node root, int k) {
         if (root == null)
             return -1;
@@ -119,6 +129,10 @@ public class TreeHelper {
             return maxByKth(root.getRight(), k);
     }
 
+    /**
+     * To find the Kth minimum value in an AVL tree.
+     * 
+     */
     public static int minByKth(Node root, int k) {
         if (root == null)
             return -1;
@@ -132,6 +146,10 @@ public class TreeHelper {
             return minByKth(root.getLeft(), k);
     }
 
+    /**
+     * To find the second smallest value in an AVL tree.
+     * 
+     */
     public static int secondSmallest(Node node) {
         if (node == null) {
             return -1;
@@ -143,6 +161,28 @@ public class TreeHelper {
             return node.getValue();
         else
             return secondSmallest(node.getLeft());
+    }
+
+    /* Use a instance variable to hold the reference of a parent node */
+    private static Node parentNode;
+
+    /**
+     * Alternative way to find the second smallest value in an AVL tree without
+     * counting the number of subtrees.
+     * 
+     */
+    public static int findSecondSmallest(Node node) {
+        if (node.getLeft() == null && node.getRight() == null) {
+            return parentNode.getValue();
+        }
+        else if (node.getLeft() == null) {
+            return node.getRight().getValue();
+        }
+        else if (node.getRight() == null) {
+            return node.getValue();
+        }
+        parentNode = node;
+        return findSecondSmallest(node.getLeft());
     }
 
 }

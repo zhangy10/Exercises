@@ -1,4 +1,4 @@
-package Learning;
+package Algorithms;
 
 public class Node {
     Node left, right;
