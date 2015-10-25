@@ -185,4 +185,21 @@ public class TreeHelper {
         return findSecondSmallest(node.getLeft());
     }
 
+    /**
+     * Thirdly, non-recursive way to find the second smallest value in an AVL
+     * tree
+     * 
+     */
+    public static int getSecondSmallest(Node node) {
+        Node parentNode = null;
+        while (node.getLeft() != null) {
+            parentNode = node;
+            node = node.getLeft();
+        }
+
+        if (node.getRight() == null) {
+            return parentNode.getValue();
+        }
+        return node.getRight().getValue();
+    }
 }

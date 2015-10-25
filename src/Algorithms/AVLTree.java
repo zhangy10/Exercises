@@ -262,6 +262,8 @@ public class AVLTree {
                 "The second smallest key : " + TreeHelper.secondSmallest(root));
         System.out.println("Alternative way to find the second smallest key : "
                 + TreeHelper.findSecondSmallest(root));
+        System.out.println("Third way to find the second smallest key : "
+                + TreeHelper.getSecondSmallest(root));
     }
 
     public void inorder(Node node) {
