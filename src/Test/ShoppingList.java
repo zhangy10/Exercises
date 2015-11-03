@@ -19,12 +19,7 @@ public class ShoppingList {
             return;
         }
         size++;
-        for (int i = 0; i < size; i++) {
-            if (list[i] == null) {
-                list[i] = item;
-                break;
-            }
-        }
+        list[size - 1] = item;
     }
     
     boolean removeItem(String item) {
