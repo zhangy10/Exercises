@@ -49,6 +49,7 @@ public class ShoppingList {
     private void removeByIndex(int index) {
         for (int i = index + 1; i < size; i++) {
             list[i - 1] = list[i];
+            list[i] = null;
         }
         size--;
     }
