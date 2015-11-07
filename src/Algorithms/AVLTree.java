@@ -232,38 +232,60 @@ public class AVLTree {
 
     public static void main(String[] args) {
         AVLTree navlTree = new AVLTree();
-        navlTree.insert(1);
-        navlTree.insert(2);
-        navlTree.insert(3);
-        navlTree.insert(4);
+        // navlTree.insert(1);
+        // navlTree.insert(2);
+        // navlTree.insert(3);
+        // navlTree.insert(4);
+        // navlTree.insert(5);
+        // navlTree.insert(6);
+        // navlTree.insert(-1);
+        // navlTree.insert(-2);
+        // navlTree.insert(100);
+        // navlTree.insert(10);
+        // navlTree.insert(9);
+        // navlTree.insert(11);
+        // navlTree.insert(13);
+        // navlTree.insert(20);
+        // navlTree.insert(25);
+        // navlTree.insert(99);
+        // navlTree.insert(-10);
+        // navlTree.insert(123);
+        // navlTree.insert(88);
+        // navlTree.insert(66);
         navlTree.insert(5);
-        navlTree.insert(6);
-        navlTree.insert(-1);
-        navlTree.insert(-2);
-        navlTree.insert(100);
-        navlTree.insert(10);
-        navlTree.insert(9);
-        navlTree.insert(11);
-        navlTree.insert(13);
-        navlTree.insert(20);
-        navlTree.insert(25);
-        navlTree.insert(99);
-        navlTree.insert(-10);
-        navlTree.insert(123);
-        navlTree.insert(88);
-        navlTree.insert(66);
         TreeHelper.displayTree(navlTree.getRoot());
-        navlTree.traverse();
-        Node root = navlTree.getRoot();
-        System.out.println(
-                "The 2th smallest key : " + TreeHelper.minByKth(root, 2));
-        System.out.println("The max key : " + TreeHelper.maxByKth(root, 1));
-        System.out.println(
-                "The second smallest key : " + TreeHelper.secondSmallest(root));
-        System.out.println("Alternative way to find the second smallest key : "
-                + TreeHelper.findSecondSmallest(root));
-        System.out.println("Third way to find the second smallest key : "
-                + TreeHelper.getSecondSmallest(root));
+        navlTree.insert(3);
+        TreeHelper.displayTree(navlTree.getRoot());
+        navlTree.insert(2);
+        TreeHelper.displayTree(navlTree.getRoot());
+        navlTree.insert(6);
+        TreeHelper.displayTree(navlTree.getRoot());
+        navlTree.insert(8);
+        TreeHelper.displayTree(navlTree.getRoot());
+        navlTree.insert(9);
+        TreeHelper.displayTree(navlTree.getRoot());
+        navlTree.insert(10);
+        TreeHelper.displayTree(navlTree.getRoot());
+        navlTree.insert(17);
+        TreeHelper.displayTree(navlTree.getRoot());
+        navlTree.insert(15);
+        TreeHelper.displayTree(navlTree.getRoot());
+        navlTree.insert(14);
+        TreeHelper.displayTree(navlTree.getRoot());
+        navlTree.insert(12);
+        TreeHelper.displayTree(navlTree.getRoot());
+        // navlTree.traverse();
+        // Node root = navlTree.getRoot();
+        // System.out.println(
+        // "The 2th smallest key : " + TreeHelper.minByKth(root, 2));
+        // System.out.println("The max key : " + TreeHelper.maxByKth(root, 1));
+        // System.out.println(
+        // "The second smallest key : " + TreeHelper.secondSmallest(root));
+        // System.out.println("Alternative way to find the second smallest key :
+        // "
+        // + TreeHelper.findSecondSmallest(root));
+        // System.out.println("Third way to find the second smallest key : "
+        // + TreeHelper.getSecondSmallest(root));
     }
 
     public void inorder(Node node) {

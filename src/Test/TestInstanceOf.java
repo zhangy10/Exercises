@@ -3,6 +3,7 @@ package Test;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Map;
@@ -15,6 +16,7 @@ public class TestInstanceOf {
 
     public TestInstanceOf() {
         Map<Integer, Boolean> map = new HashMap<>();
+        ArrayList<String> list = new ArrayList<>();
     }
 
     public static void main(String[] args) throws checkedException {
