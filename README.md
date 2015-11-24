@@ -12,4 +12,4 @@ It provides a small architecture for implementing some graph algorithms.
 
 ### Programming Folder
 
-Programming assignments' implementations covering from lab1 to lab5.
+Programming assignments' implementations.
