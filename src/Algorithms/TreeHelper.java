@@ -67,8 +67,7 @@ public class TreeHelper {
         globalStack.push(root);
         int emptyLeaf = 32;
         boolean isRowEmpty = false;
-        System.out.println(
-                "+------------------------------------------------------------+");
+        System.out.println();
         while (isRowEmpty == false) {
 
             Stack localStack = new Stack();
@@ -85,7 +84,7 @@ public class TreeHelper {
                         isRowEmpty = false;
                 }
                 else {
-                    System.out.print("--");
+                    System.out.print("__");
                     localStack.push(null);
                     localStack.push(null);
                 }
@@ -97,8 +96,8 @@ public class TreeHelper {
             while (localStack.isEmpty() == false)
                 globalStack.push(localStack.pop());
         }
-        System.out.println(
-                "+------------------------------------------------------------+");
+//        System.out.println(
+//                "+------------------------------------------------------------+");
     }
 
     /**
@@ -202,4 +201,33 @@ public class TreeHelper {
         }
         return node.getRight().getValue();
     }
+    
+    public static void removeSmallestNode(Node T) {
+        Node T1 = T;
+        Node P = T;
+        while (!isEmpty(T1.left)) {
+            P = T1;
+            T1 = T1.left;
+        }
+        if (isLeaf(T1)) {
+           P.left = null;
+           T1 = null;
+        }
+        else {
+            P.left = T1.right;
+            T1 = null;
+        }
+    }
+    
+    private static boolean isLeaf(Node node) {
+        if (node.left == null && node.right == null) {
+            return true;
+        }
+        return false;
+    }
+    
+    private static boolean isEmpty(Node node) {
+        return node == null;
+    }
+    
 }

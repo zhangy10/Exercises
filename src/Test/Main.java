@@ -36,8 +36,9 @@ public class Main {
 //        System.out.println(shoppingList.toString());
 //        System.out.println(shoppingList.getSize());
         
-        int[] a = {123, 332, 1, 32, 5334, 112, 32, 53};
-        printList(a);
+//        int[] a = {123, 332, 1, 32, 5334, 112, 32, 53};
+//        printList(a);
+        
     }
     
     
